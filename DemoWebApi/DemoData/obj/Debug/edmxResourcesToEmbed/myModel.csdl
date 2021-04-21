@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ProductoItalikaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="MotosItalika">
+    <Key>
+      <PropertyRef Name="idMotos" />
+    </Key>
+    <Property Name="idMotos" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SKU" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Fert" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Modelo" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IdTipo" Type="Int32" Nullable="false" />
+    <Property Name="NumSerie" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Tipo" Relationship="Self.FK_TIPO" FromRole="MotosItalika" ToRole="Tipo" />
+  </EntityType>
+  <EntityType Name="Tipo">
+    <Key>
+      <PropertyRef Name="idTipo" />
+    </Key>
+    <Property Name="idTipo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NombreTipo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="MotosItalika" Relationship="Self.FK_TIPO" FromRole="Tipo" ToRole="MotosItalika" />
+  </EntityType>
+  <Association Name="FK_TIPO">
+    <End Role="Tipo" Type="Self.Tipo" Multiplicity="1" />
+    <End Role="MotosItalika" Type="Self.MotosItalika" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tipo">
+        <PropertyRef Name="idTipo" />
+      </Principal>
+      <Dependent Role="MotosItalika">
+        <PropertyRef Name="IdTipo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ProductoItalikaEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="MotosItalika" EntityType="Self.MotosItalika" />
+    <EntitySet Name="Tipo" EntityType="Self.Tipo" />
+    <AssociationSet Name="FK_TIPO" Association="Self.FK_TIPO">
+      <End Role="Tipo" EntitySet="Tipo" />
+      <End Role="MotosItalika" EntitySet="MotosItalika" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,77 @@
+﻿@model DemoData.MotosItalika
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create</h2>
+<div class="errorsFrm">
+    @Html.Raw(ViewBag.Errors)
+</div>
+
+@using (Html.BeginForm("Create", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+@Html.AntiForgeryToken()
+                <div class="row">
+                    <div class="row col s12 l8 offset-l2">
+                        <div class="col s12">
+                            <div class="form-horizontal">
+                                <h5>Agregar Motos</h5>
+                                <div>
+                                    @Html.ActionLink("Regresar", "Index")
+                                </div>
+                                <hr />
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                <div class="errorsFrm">
+                                    @Html.Raw(ViewBag.Errors)
+                                </div>
+                                <br />
+                                <div class="input-field">
+                                    @Html.LabelFor(model => model.SKU, htmlAttributes: new { @class = " col-md-2" })
+                                    @Html.EditorFor(model => model.SKU, new { htmlAttributes = new { @class = "", @maxlength = "15" } })
+                                    @Html.ValidationMessageFor(model => model.SKU, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div class="">
+                                    @Html.LabelFor(model => model.Fert, "Fert", htmlAttributes: new { @class = "control-label col-md-2" })
+                                    @Html.EditorFor(model => model.Fert, new { htmlAttributes = new { @class = "", @maxlength = "13" } })
+                                    @Html.ValidationMessageFor(model => model.Fert, "", new { @class = "text-danger" })
+                                    <br />
+                                </div>
+
+                                <div class="input-field">
+                                    @Html.LabelFor(model => model.Modelo, "Modelo", htmlAttributes: new { @class = "control-label col-md-2" })
+                                    @Html.EditorFor(model => model.Modelo, new { htmlAttributes = new { @class = "form-control isdecimal", @onkeypress = "return soloDecimales(event)", @maxlength = "8" } })
+                                    @Html.ValidationMessageFor(model => model.Modelo, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div class="col s12 l12">
+                                    @Html.LabelFor(model => model.IdTipo, "Tipo de moto", htmlAttributes: new { @class = "control-label col-md-2" })
+                                    @Html.DropDownList("IdTipo", new SelectList(ViewBag.tipos, "IdTipo", "NombreTipo"), htmlAttributes: new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.IdTipo, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div class="input-field">
+                                    @Html.LabelFor(model => model.NumSerie, "NumSerie", htmlAttributes: new { @class = "control-label col-md-2" })
+                                    @Html.EditorFor(model => model.NumSerie, new { htmlAttributes = new { @class = "form-control isdecimal", @onkeypress = "return soloDecimales(event)", @maxlength = "8" } })
+                                    @Html.ValidationMessageFor(model => model.NumSerie, "", new { @class = "text-danger" })
+                                </div>
+
+
+
+                                <div class="input-field">
+                                    @Html.LabelFor(model => model.Fecha, "Fecha", htmlAttributes: new { @class = "active" })
+                                    @Html.TextBoxFor(model => model.Fecha, "{0:dd/MM/yyyy}", htmlAttributes: new { @class = "datepicker", @type = "Date" })
+                                    @Html.ValidationMessageFor(model => model.Fecha, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div class="input-field">
+                                    <div class="col-md-offset-2 col-md-10">
+                                        <input type="submit" value="Guardar" class="btn btn-default" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>}
+

@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ProductoItalikaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="MotosItalika">
+          <Key>
+            <PropertyRef Name="idMotos" />
+          </Key>
+          <Property Name="idMotos" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SKU" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Fert" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Modelo" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="IdTipo" Type="int" Nullable="false" />
+          <Property Name="NumSerie" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="Fecha" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tipo">
+          <Key>
+            <PropertyRef Name="idTipo" />
+          </Key>
+          <Property Name="idTipo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreTipo" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_TIPO">
+          <End Role="Tipo" Type="Self.Tipo" Multiplicity="1" />
+          <End Role="MotosItalika" Type="Self.MotosItalika" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tipo">
+              <PropertyRef Name="idTipo" />
+            </Principal>
+            <Dependent Role="MotosItalika">
+              <PropertyRef Name="IdTipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ProductoItalikaModelStoreContainer">
+          <EntitySet Name="MotosItalika" EntityType="Self.MotosItalika" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tipo" EntityType="Self.Tipo" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_TIPO" Association="Self.FK_TIPO">
+            <End Role="Tipo" EntitySet="Tipo" />
+            <End Role="MotosItalika" EntitySet="MotosItalika" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ProductoItalikaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="MotosItalika">
+          <Key>
+            <PropertyRef Name="idMotos" />
+          </Key>
+          <Property Name="idMotos" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SKU" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Fert" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Modelo" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IdTipo" Type="Int32" Nullable="false" />
+          <Property Name="NumSerie" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Tipo" Relationship="Self.FK_TIPO" FromRole="MotosItalika" ToRole="Tipo" />
+        </EntityType>
+        <EntityType Name="Tipo">
+          <Key>
+            <PropertyRef Name="idTipo" />
+          </Key>
+          <Property Name="idTipo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreTipo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="MotosItalika" Relationship="Self.FK_TIPO" FromRole="Tipo" ToRole="MotosItalika" />
+        </EntityType>
+        <Association Name="FK_TIPO">
+          <End Role="Tipo" Type="Self.Tipo" Multiplicity="1" />
+          <End Role="MotosItalika" Type="Self.MotosItalika" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tipo">
+              <PropertyRef Name="idTipo" />
+            </Principal>
+            <Dependent Role="MotosItalika">
+              <PropertyRef Name="IdTipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ProductoItalikaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="MotosItalika" EntityType="Self.MotosItalika" />
+          <EntitySet Name="Tipo" EntityType="Self.Tipo" />
+          <AssociationSet Name="FK_TIPO" Association="Self.FK_TIPO">
+            <End Role="Tipo" EntitySet="Tipo" />
+            <End Role="MotosItalika" EntitySet="MotosItalika" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ProductoItalikaModelStoreContainer" CdmEntityContainer="ProductoItalikaEntities">
+          <EntitySetMapping Name="MotosItalika">
+            <EntityTypeMapping TypeName="ProductoItalikaModel.MotosItalika">
+              <MappingFragment StoreEntitySet="MotosItalika">
+                <ScalarProperty Name="idMotos" ColumnName="idMotos" />
+                <ScalarProperty Name="SKU" ColumnName="SKU" />
+                <ScalarProperty Name="Fert" ColumnName="Fert" />
+                <ScalarProperty Name="Modelo" ColumnName="Modelo" />
+                <ScalarProperty Name="IdTipo" ColumnName="IdTipo" />
+                <ScalarProperty Name="NumSerie" ColumnName="NumSerie" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tipo">
+            <EntityTypeMapping TypeName="ProductoItalikaModel.Tipo">
+              <MappingFragment StoreEntitySet="Tipo">
+                <ScalarProperty Name="idTipo" ColumnName="idTipo" />
+                <ScalarProperty Name="NombreTipo" ColumnName="NombreTipo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

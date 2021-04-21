@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ProductoItalikaModelStoreContainer" CdmEntityContainer="ProductoItalikaEntities">
+    <EntitySetMapping Name="MotosItalika">
+      <EntityTypeMapping TypeName="ProductoItalikaModel.MotosItalika">
+        <MappingFragment StoreEntitySet="MotosItalika">
+          <ScalarProperty Name="idMotos" ColumnName="idMotos" />
+          <ScalarProperty Name="SKU" ColumnName="SKU" />
+          <ScalarProperty Name="Fert" ColumnName="Fert" />
+          <ScalarProperty Name="Modelo" ColumnName="Modelo" />
+          <ScalarProperty Name="IdTipo" ColumnName="IdTipo" />
+          <ScalarProperty Name="NumSerie" ColumnName="NumSerie" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tipo">
+      <EntityTypeMapping TypeName="ProductoItalikaModel.Tipo">
+        <MappingFragment StoreEntitySet="Tipo">
+          <ScalarProperty Name="idTipo" ColumnName="idTipo" />
+          <ScalarProperty Name="NombreTipo" ColumnName="NombreTipo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

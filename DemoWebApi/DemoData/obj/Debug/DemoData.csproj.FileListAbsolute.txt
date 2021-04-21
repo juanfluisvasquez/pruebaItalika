@@ -1,0 +1,12 @@
+C:\Users\shino\source\repos\DemoWebApi\DemoData\bin\Debug\DemoData.dll.config
+C:\Users\shino\source\repos\DemoWebApi\DemoData\bin\Debug\DemoData.dll
+C:\Users\shino\source\repos\DemoWebApi\DemoData\bin\Debug\DemoData.pdb
+C:\Users\shino\source\repos\DemoWebApi\DemoData\bin\Debug\EntityFramework.dll
+C:\Users\shino\source\repos\DemoWebApi\DemoData\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\shino\source\repos\DemoWebApi\DemoData\bin\Debug\EntityFramework.xml
+C:\Users\shino\source\repos\DemoWebApi\DemoData\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\shino\source\repos\DemoWebApi\DemoData\obj\Debug\DemoData.csprojAssemblyReference.cache
+C:\Users\shino\source\repos\DemoWebApi\DemoData\obj\Debug\DemoData.csproj.CoreCompileInputs.cache
+C:\Users\shino\source\repos\DemoWebApi\DemoData\obj\Debug\DemoData.csproj.CopyComplete
+C:\Users\shino\source\repos\DemoWebApi\DemoData\obj\Debug\DemoData.dll
+C:\Users\shino\source\repos\DemoWebApi\DemoData\obj\Debug\DemoData.pdb
